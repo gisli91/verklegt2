@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from user.forms.profile_form import ProfileForm
 from user.models import Profile
 
+
 # Create your views here.
 def register(request):
     if request.method == "POST":
@@ -15,8 +16,9 @@ def register(request):
         "form": UserCreationForm()
     })
 
+
 def profile(request):
-    profile = Profile.objects.filter(user=request.user).firt()
+    profile = Profile.objects.filter(user=request.user).first()
     if request.method == "POST":
         form = ProfileForm(instance=profile, data=request.POST)
         if form.is_valid():

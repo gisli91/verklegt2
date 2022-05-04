@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -6,7 +7,7 @@ class Item(models.Model):
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255, blank=True)
     highest_bid = models.FloatField()
-    # seller = models.ForeignKey(User, on_delete=models.CASCADE)
+    seller = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class ItemImage(models.Model):
     image = models.CharField(max_length=9999)
