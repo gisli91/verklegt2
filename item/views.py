@@ -1,12 +1,30 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from item.forms.item_form import ItemCreateForm
+from item.models import Item, ItemImage
+
 
 # Create your views here.
-from django.shortcuts import render
 from django.http import HttpResponse
-items = [
-    {"name": "Köttur til sölu", "price": 1000, "description": "svartur og grimmur"},
-    {"name": "Antík vatnabátur", "price": 1200000, "description": "Flýtur"}
-]
+
 # Create your views here.
 def index(request):
-    return render(request, "item/index.html", context={"items": items})
+    context = {"items": Item.objects.all().order_by("name")}
+    return render(request, "item/index.html", context)
+
+def auction_item(request):
+    if request.method == "POST":
+        form = ItemCreateForm(data=request.POST)
+        if form.is_valid():
+            auction = form.save(commit=False)
+            auction.seller = request.user
+            auction.save()
+            item_img = ItemImage(image=request.POST["image"], item=auction)
+            item_img.save()
+            return redirect("item-index")
+    form = ItemCreateForm()
+    return render(request, "item/auction_item.html", {
+        "form": form
+    })
+
+
+

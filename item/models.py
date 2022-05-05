@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -8,6 +10,8 @@ class Item(models.Model):
     description = models.CharField(max_length=255, blank=True)
     highest_bid = models.FloatField()
     seller = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_posted = models.DateTimeField(default=datetime.now(), blank=True)
+
 
 class ItemImage(models.Model):
     image = models.CharField(max_length=9999)

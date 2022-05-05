@@ -6,7 +6,7 @@ from item.models import Item
 class ItemUpdateForm(ModelForm):
     class Meta:
         model = Item
-        exclude = ["id"]
+        exclude = ["id", "seller", "date_posted"]
         widgets = {
             "name": widgets.TextInput(attrs={"class": "form-control"}),
             "description": widgets.TextInput(attrs={"class": "form-control"}),
@@ -20,7 +20,7 @@ class ItemCreateForm(ModelForm):
 
     class Meta:
         model = Item
-        exclude = ["id"]
+        exclude = ["id", "seller", "date_posted"]
         widgets = {
             "name": widgets.TextInput(attrs={"class": "form-control"}),
             "description": widgets.TextInput(attrs={"class": "form-control"}),

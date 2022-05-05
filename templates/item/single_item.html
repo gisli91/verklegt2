@@ -1,3 +1,10 @@
-<div class="item">
-    <p>GIT ER ÓÞOLANDI</p>
+<div class="well item">
+    <a href="/items/{{ item.id }}">
+        <img class="item-img" src="{{ item.ItemImage_set.first.image }}" alt="">
+        <h4>{{ item.name }}</h4>
+        <p>{{ item.seller.name }}</p>
+        <h5>{{ item.highest_bid }}</h5>
+        <p>{{ item.description }}</p>
+
+    </a>
 </div>
