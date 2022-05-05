@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from item.forms.item_form import ItemCreateForm
 from item.models import Item, ItemImage
@@ -11,6 +12,8 @@ def index(request):
     context = {"items": Item.objects.all().order_by("name")}
     return render(request, "item/index.html", context)
 
+
+@login_required
 def auction_item(request):
     if request.method == "POST":
         form = ItemCreateForm(data=request.POST)
