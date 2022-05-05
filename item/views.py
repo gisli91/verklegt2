@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from item.forms.item_form import ItemCreateForm
 from item.models import Item, ItemImage
 
@@ -29,5 +29,15 @@ def auction_item(request):
         "form": form
     })
 
+def get_item_by_id(request, id):
+    return render(request, "item/item-details.html", {
+        "item": get_object_or_404(Item, pk=id)
+    })
 
+@login_required
+def delete_item(request, id):
+    item = get_object_or_404(Item, pk=id)
+    if item.seller == request.user:
+        item.delete()
+    return redirect("item-index")
 
