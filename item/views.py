@@ -12,6 +12,9 @@ def index(request):
     context = {"items": Item.objects.all().order_by("name")}
     return render(request, "item/index.html", context)
 
+def frontpage(request):
+    return render(request, "frontpage.html")
+
 
 @login_required
 def auction_item(request):
