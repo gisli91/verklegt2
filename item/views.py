@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from item.forms.item_form import ItemCreateForm
-from item.models import Item, ItemImage
+from item.models import Item
 
 
 # Create your views here.
@@ -19,13 +19,11 @@ def frontpage(request):
 @login_required
 def auction_item(request):
     if request.method == "POST":
-        form = ItemCreateForm(data=request.POST)
+        form = ItemCreateForm(request.POST, request.FILES)
         if form.is_valid():
             auction = form.save(commit=False)
             auction.seller = request.user
             auction.save()
-            item_img = ItemImage(image=request.POST["image"], item=auction)
-            item_img.save()
             return redirect("item-index")
     form = ItemCreateForm()
     return render(request, "item/auction_item.html", {

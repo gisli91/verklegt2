@@ -4,9 +4,9 @@
     <p>{{ item.description }}</p>
     <p>${{ item.highest_bid }}Kr</p>
     <p>Seller: {{ item.seller.username }}</p>
-    {% for item_image in item.itemimage_set.all %}
-        <img src="{{ item_image.image }}" class="item-img"/>
-    {% endfor %}
+
+    <img src="{{ item.item_image.url }}" class="item-img"/>
+
     {% if item.seller == request.user %}
         <a href="{% url "delete_item" item.id %}" class="block btn btn-primary">Delete Item</a>
     {% endif %}
