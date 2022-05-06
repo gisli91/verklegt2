@@ -2,7 +2,11 @@
 {% block content %}
     <form class="form form-horizontal "method="post">
         {% csrf_token %}
-        {{ form }}
+        <h3>{{ user.username }}</h3>
+        <fieldset class="form-group" enctype="multipart/form-data">
+            {{ u_form }}
+            {{ p_form }}
+        </fieldset>
         <input type="submit" class="btn btn-primary" value="Update" />
     </form>
 {% endblock %}

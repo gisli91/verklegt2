@@ -8,5 +8,5 @@ class ProfileForm(ModelForm):
         model = Profile
         exclude = ["id", "user"]
         widgets = {
-            "profile_image": widgets.TextInput(attrs={ "class": "form-control"}),
+            "bio": widgets.Textarea(attrs={ "class": "form-control"}),
         }

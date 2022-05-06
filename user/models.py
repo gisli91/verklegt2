@@ -1,12 +1,13 @@
 from django.contrib.auth.models import User
 from django.db import models
-
-# Create your models here.
 from item.models import Item
+# Create your models here.
+
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.CharField(max_length=255, blank=True)
     profile_image = models.ImageField(default="default.jpg", upload_to="profile_images")
 
 

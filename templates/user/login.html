@@ -1,8 +1,18 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
-    <form method="post" class="form form-horizontal">
+    <form class="content-section "method="post">
         {% csrf_token %}
-        {{ form }}
-        <input type="submit" class="btn btn-primary" value="Login" />
+        <fieldset class="from-group">
+            <legend class="border-bottom mb-4">Log In</legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Login</button>
+        </div>
     </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">Don´t have an account?</small>
+        <a href="{% url "register" %}" class="ml-2">Create an account</a>
+    </div>
 {% endblock %}
