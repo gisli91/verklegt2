@@ -10,18 +10,5 @@
                 <p class="vTextField">{{ user.profile.bio }}</p>
             </div>
         </div>
-        {% if user == request.user %}
-        <form class="content-section "method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <fieldset class="from-group">
-                <legend class="border-bottom mb-4">Profile</legend>
-                {{ u_form|crispy }}
-                {{ p_form|crispy }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-primary" type="submit">Update</button>
-            </div>
-        </form>
-        {% endif %}
     </div>
 {% endblock %}

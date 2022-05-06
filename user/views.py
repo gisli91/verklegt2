@@ -1,7 +1,9 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+
 from user.forms.user_forms import UserSignupForm, UserUpdateForm, ProfileUpdateForm
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from user.forms.profile_form import ProfileForm
 from user.models import Profile
@@ -39,3 +41,8 @@ def profile(request):
     }
 
     return render(request, "user/profile.html", context)
+
+def some_profile(request,id):
+    return render(request, "user/some_user.html", {
+            "user": get_object_or_404(User, pk=id)
+        })
