@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<form class="form form-horizontal" method="post" action="{% url "create_item" %}">
+<form class="form form-horizontal" method="post" action="{% url "create_item" %}" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form|crispy }}
     <input type="submit" value="Create" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0">
