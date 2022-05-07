@@ -25,7 +25,9 @@ urlpatterns = [
     path("items/", include("item.urls")),
     path("user/", include("user.urls")),
     path("messages/", include("message.urls")),
-    path("", views.frontpage, name="frontpage")
+    path("", views.frontpage, name="frontpage"),
+    path("bids/", include("bid.urls")),
+
 ]
 
 if settings.DEBUG:

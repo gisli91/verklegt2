@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1>{{ item.name }}</h1>
+    <p>{{ item.description }}</p>
+    <p>${{ item.highest_bid }}</p>
+    <h4>Seller</h4>
+    <a href="/user/profile/{{ item.seller.id }}">{{ item.seller.username }}</a>
+
+    <img src="{{ item.item_image.url }}" class="item-img"/>
+
+    <h3>What is your offer?</h3>
+    <form class="content-section "method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="from-group">
+                <legend class="border-bottom mb-4">Enter your offer</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                   <button class="btn btn-primary" type="submit">Make Bid</button>
+            </div>
+        </form>
+
+{% endblock %}
