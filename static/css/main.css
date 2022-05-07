@@ -16,3 +16,16 @@
 .nav-item-left{
     right: auto;
 }
+
+.container {
+    padding-top: 2em;
+    margin-top: 2em;
+    margin-bottom: 6em;
+    border:solid lightgrey 1.5px;
+    background-color: #F5F5F5;
+}
+
+.user-profile {
+    display: block;
+}
+

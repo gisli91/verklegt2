@@ -43,6 +43,9 @@ def profile(request):
     return render(request, "user/profile.html", context)
 
 def some_profile(request,id):
+    user = get_object_or_404(User, pk=id)
+    if user == request.user:
+        return redirect("profile")
     return render(request, "user/some_user.html", {
             "user": get_object_or_404(User, pk=id)
         })
