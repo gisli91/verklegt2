@@ -23,6 +23,12 @@
                         <li class="nav-item">
                          <a class="nav-link" aria-current="page" href="{% url "create_item" %}" >Auction Item</a>
                     </li>
+                        </ul>
+                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{% url "message-index" %}" >Messages</a>
+                    </li>
                         <li class="nav-item">
                          <a class="nav-link" aria-current="page" href="{% url "profile" %}" >Profile</a>
                     </li>
@@ -30,6 +36,9 @@
                          <a class="nav-link" aria-current="page" href="{% url "logout" %}" >Logout</a>
                     </li>
                 {% else %}
+                        </ul>
+                            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+
                         <li class="nav-item">
                          <a class="nav-link" aria-current="page" href="{% url "login" %}" >Login</a>
                     </li>

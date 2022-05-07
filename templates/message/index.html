@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="item-collection">
+        <h2>Messages</h2>
+    </div>
+    {% for message in messages %}
+        {% include "message/single_message.html" with message=message %}
+    {% endfor %}
+{% endblock %}

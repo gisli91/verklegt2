@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("items/", include("item.urls")),
     path("user/", include("user.urls")),
+    path("messages/", include("message.urls")),
     path("", views.frontpage, name="frontpage")
 ]
 
