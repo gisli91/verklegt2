@@ -2,7 +2,7 @@
 {% block content %}
     <h1>{{ item.name }}</h1>
     <p>{{ item.description }}</p>
-    <p>${{ item.highest_bid }}Kr</p>
+    <p>${{ item.highest_bid }}</p>
 
     <a href="/user/profile/{{ item.seller.id }}">Seller: {{ item.seller.username }}</a>
 
@@ -10,5 +10,9 @@
 
     {% if item.seller == request.user %}
         <a href="{% url "delete_item" item.id %}" class="block btn btn-primary">Delete Item</a>
+        {% else %}
+            {% if user.is_authenticated %}
+                <a href="#" class="block btn btn-primary">Bid</a>
+            {% endif %}
     {% endif %}
 {% endblock %}
