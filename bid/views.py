@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from item.models import Item
 from django.contrib.auth.models import User
@@ -13,9 +14,12 @@ def make_bid(request, id):
         form = BidForm(request.POST)
         if form.is_valid():
             bid = form.save(commit=False)
-            bid.item = item
             bid.bidder = request.user
+            bid.item_id = item.id
             bid.save()
+            messages.success(request, f"Your bid of ${bid.bid_amount} for Item:{item.name}, has been successfully placed!")
+            item.highest_bid = bid.bid_amount
+            item.save()
             return redirect("item-index")
     else:
         bid = BidForm()

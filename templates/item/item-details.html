@@ -4,7 +4,7 @@
     <p>{{ item.description }}</p>
     <p>${{ item.highest_bid }}</p>
     <h4>Seller</h4>
-    <a href="/user/profile/{{ item.seller.id }}">{{ item.seller.username }}</a>
+    <a class="usernames" href="/user/profile/{{ item.seller.id }}">{{ item.seller.username }}</a>
 
     <img src="{{ item.item_image.url }}" class="item-img"/>
 

@@ -7,5 +7,5 @@ from django.db import models
 class Message(models.Model):
     content = models.CharField(max_length=255)
     sender = models.ForeignKey(User, related_name="message_sender", on_delete=models.CASCADE)
-    receiver = models.CharField(max_length=50)
+    receiver = models.ForeignKey(User, related_name="message_receiver", on_delete=models.CASCADE)
     date_sent = models.DateTimeField(default=datetime.now(), blank=True)
