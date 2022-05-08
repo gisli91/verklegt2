@@ -14,5 +14,6 @@ def inbox(request):
     return render(request, "message/index.html", context)
 
 
-#def send(request):
+def send(request, id):
+    id = get_object_or_404()
 
