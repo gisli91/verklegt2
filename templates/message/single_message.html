@@ -1,9 +1,14 @@
-<div class="well-item">
-    <a href="/items/{{ message.id }}">
-        <h4>{{ message.subject_header }}</h4>
-        <p>from: {{ message.sender }}</p>
-        <p>{{ message.message_content }}</p>
-        <small class="text-muted">{{ message.date_sent }}</small>
-
-    </a>
+<div class="col-sm-5">
+    <div class="card" style="width: 20rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{ message.subject_header }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">From: <a href="/user/profile/{{ message.sender.id }}">{{ message.sender }}</a></h6>
+            <p class="card-text">{{ message.message_content }}</p>
+            <a href="#" class="card-link">Open</a>
+            <a href="#" class="card-link">Reply</a>
+        </div>
+    </div>
 </div>
+
+
+

@@ -10,3 +10,8 @@ class BidForm(forms.ModelForm):
         model = Bid
         fields = ["bid_amount"]
 
+
+
+
+
+
