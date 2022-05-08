@@ -1,7 +1,9 @@
 <div class="well-item">
     <a href="/items/{{ message.id }}">
-
-        <h4>{{ message.content }}</h4>
+        <h4>{{ message.subject_header }}</h4>
+        <p>from: {{ message.sender }}</p>
+        <p>{{ message.message_content }}</p>
+        <small class="text-muted">{{ message.date_sent }}</small>
 
     </a>
 </div>

@@ -2,6 +2,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from bid.models import Bid
 from .models import Message
+from django.contrib.auth.models import User
 
 
 
@@ -9,4 +10,12 @@ from .models import Message
 @receiver(post_save, sender=Bid)
 def receive_bid(sender, instance, created, **kwargs):
     if created:
-        Message.objects.create(content="blablabla", sender=instance.bidder, receiver=instance.item.seller)
+
+        content = f"You have received a new ${instance.bid_amount} bid for {instance.item.name} from user {instance.bidder}"
+        header = f"New bid for {instance.item.name}"
+        sender = User.objects.filter(username="Notifications").first()
+
+        Message.objects.create(message_content=content,
+                               subject_header=header,
+                               sender=sender,
+                               receiver=instance.item.seller)
