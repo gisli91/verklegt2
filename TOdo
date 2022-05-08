@@ -1,0 +1,33 @@
+Accept/Decline bid  ///??completed_auctions app???
+
+Validation á bid svo ekki sé hægt að bjóða lærra en current highest
+
+útæra #tags í item creation
+
+Related items í item-details
+
+Condition i item-details
+
+CheckOut
+    Contact information page
+        ●Full name
+        ●Street name
+        ●House number
+        ●City
+        ●Country (displayed as a <select> HTML element)
+        ●Postal code
+    Payment page
+        ●Name of cardholder
+        ●Card number
+        ●Expiration date
+        ●CVC
+    Rate the seller
+
+Ajax search í items
+
+Raða filterar
+PMs
+Profile img í navbar
+average rating í navbar
+skoða mín items
+

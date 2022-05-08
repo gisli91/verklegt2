@@ -19,3 +19,4 @@ def receive_bid(sender, instance, created, **kwargs):
                                subject_header=header,
                                sender=sender,
                                receiver=instance.item.seller)
+
