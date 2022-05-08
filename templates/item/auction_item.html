@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<form class="form form-horizontal" method="post" action="{% url "create_item" %}" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <input type="submit" value="Create" class="btn btn-primary pull-right" style="clear:both; margin: 10px 0">
-</form>
+<form class="content-section "method="post" action="{% url "create_item" %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="from-group">
+                <legend class="border-bottom mb-4">Create New Auction</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Auction Item</button>
+            </div>
+        </form>
 {% endblock %}
