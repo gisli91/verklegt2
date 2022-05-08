@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
     <h2>Messages</h2>
-    <div class="row">
+    <div class="card-group">
+        <div class="row">
 
             {% for message in messages %}
                 {% include "message/single_message.html" with message=message %}
             {% endfor %}
-
+        </div>
     </div>
 
 {% endblock %}
