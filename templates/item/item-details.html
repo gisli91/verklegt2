@@ -1,18 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>{{ item.name }}</h1>
-    <p>{{ item.description }}</p>
-    <p>${{ item.highest_bid }}</p>
-    <h4>Seller</h4>
-    <a class="usernames" href="/user/profile/{{ item.seller.id }}">{{ item.seller.username }}</a>
+    <div class="row">
+        <div class="col-mb-6">
+            <h1>{{ item.name }}</h1>
+            <img src="{{ item.item_image.url }}" class="item-img"/>
 
-    <img src="{{ item.item_image.url }}" class="item-img"/>
 
-    {% if item.seller == request.user %}
-        <a href="{% url "delete_item" item.id %}" class="block btn btn-primary">Delete Item</a>
-        {% else %}
-            {% if user.is_authenticated %}
-                <a href="{% url "make_bid" item.id %}" class="block btn btn-primary">Bid</a>
+        </div>
+        <div class="col-mb-6">
+            <h4>Seller</h4>
+            <a class="usernames" href="/user/profile/{{ item.seller.id }}">{{ item.seller.username }}</a>
+            <p>{{ item.description }}</p>
+            <p>${{ item.highest_bid }}</p>
+
+
+            {% if item.seller == request.user %}
+                <a href="{% url "delete_item" item.id %}" class="block btn btn-primary">Delete Item</a>
+                {% else %}
+                    {% if user.is_authenticated %}
+                        <a href="{% url "make_bid" item.id %}" class="block btn btn-primary">Bid</a>
+                    {% endif %}
             {% endif %}
-    {% endif %}
+        </div>
+    </div>
 {% endblock %}
