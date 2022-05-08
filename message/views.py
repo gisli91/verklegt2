@@ -14,4 +14,5 @@ def inbox(request):
     return render(request, "message/index.html", context)
 
 
+#def send(request):
 
