@@ -15,16 +15,14 @@ def inbox(request):
     return render(request, "message/index.html", context)
 
 
-def reply(request):
+def reply(request, id):
     return render(request, "message/index.html")
 
 
 def send(request):
-
     if request.method == "POST":
-        data = request.POST.copy()
 
-        form = MessageForm(data)
+        form = MessageForm(request.POST)
         if form.is_valid():
             message = form.save(commit=False)
             message.sender = request.user

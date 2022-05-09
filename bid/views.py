@@ -25,7 +25,7 @@ def make_bid(request, id):
                 item.save()
                 return redirect("item-index")
             else:
-                messages.error(request,f"Minimum bid amount is {item.highest_bid * 1.05}")
+                messages.error(request, f"Minimum bid amount is {item.highest_bid * 1.05}")
                 return redirect("make_bid", id=id)
 
 
