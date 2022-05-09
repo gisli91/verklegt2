@@ -5,4 +5,5 @@ from . import views
 urlpatterns = [
     path('<int:id>/', views.make_bid, name="make_bid"),
 
+
 ]

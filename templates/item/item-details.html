@@ -1,13 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="row">
-        <div class="col-mb-6">
+    <div>
+
             <h1>{{ item.name }}</h1>
             <img src="{{ item.item_image.url }}" class="item-img"/>
-
-
         </div>
-        <div class="col-mb-6">
+
+
             <h4>Seller</h4>
             <a class="usernames" href="/user/profile/{{ item.seller.id }}">{{ item.seller.username }}</a>
             <p>{{ item.description }}</p>
@@ -21,6 +20,6 @@
                         <a href="{% url "make_bid" item.id %}" class="block btn btn-primary">Bid</a>
                     {% endif %}
             {% endif %}
-        </div>
+
     </div>
 {% endblock %}
