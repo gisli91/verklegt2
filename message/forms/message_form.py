@@ -1,14 +1,14 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from item.models import Item
-from bid.models import Bid
+
+from message.models import Message
 
 
-class BidForm(forms.ModelForm):
+class MessageForm(forms.ModelForm):
     class Meta:
-        model = Bid
-        fields = ["bid_amount"]
+        model = Message
+        fields = ["subject_header", "message_content", "receiver"]
 
 
 
