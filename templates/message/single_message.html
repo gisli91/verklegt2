@@ -5,7 +5,7 @@
             <h6 class="card-subtitle mb-2 text-muted">From: <a href="/user/profile/{{ message.sender.id }}">{{ message.sender }}</a></h6>
             <p class="card-text">{{ message.message_content }}</p>
             <a href="#" class="card-link">Open</a>
-            <a href="#" class="card-link">Reply</a>
+            <a href="/messages/reply/{{ message.id }} %}" class="card-link">Reply</a>
             <a href="#" class="card-link">Delete</a>
 
         </div>

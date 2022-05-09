@@ -10,3 +10,6 @@ class Message(models.Model):
     receiver = models.ForeignKey(User, related_name="message_receiver", on_delete=models.CASCADE)
     date_sent = models.DateTimeField(default=datetime.now(), blank=True)
     subject_header = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f"{self.sender}"
