@@ -2,7 +2,7 @@
 {% block content %}
     <h2>Messages</h2>
     <div class="card-group">
-        <a href="{% url 'send_message' %}" class="block btn btn-primary">New message</a>
+        <a style="margin-top: 10px" href="{% url 'send_message' %}" class="block btn btn-primary">New message</a>
         <div class="row">
 
             {% for message in messages %}

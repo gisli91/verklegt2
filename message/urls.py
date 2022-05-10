@@ -8,5 +8,6 @@ urlpatterns = [
     #path('new', views.new_message, name="new_message"),
     path('new', views.send, name="send_message"),
     path('reply/<int:id>/', views.reply, name="reply_message"),
+    path('<int:id>/', views.delete, name="delete_message"),
 
 ]
