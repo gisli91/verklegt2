@@ -12,7 +12,7 @@
             <a class="usernames" href="/user/profile/{{ item.seller.id }}">{{ item.seller.username }}</a>
             <p>{{ item.description }}</p>
             <p>${{ item.highest_bid }}</p>
-
+            <p class="card-text"><small class="text-muted">Category: {{ item.category }} </small></p>
 
             {% if item.seller == request.user %}
                 <a href="{% url "delete_item" item.id %}" class="block btn btn-primary">Delete Item</a>

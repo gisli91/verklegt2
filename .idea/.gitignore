@@ -9,8 +9,7 @@
 # Environments
 .env
 .venv
-*.pyc
-*.pyo
+*.py[cod]
 env/
 venv/
 ENV/
@@ -18,3 +17,4 @@ env.bak/
 venv.bak/
 build/
 dist/
+__pycache__/
