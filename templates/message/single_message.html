@@ -1,12 +1,13 @@
 <div class="col-sm-6">
-    <div class="card" style="width: 20rem;">
-        <div class="card-body">
+    <div id="message-container" class="card" style="width: 20rem; margin-top: 50px">
+        <div class="card-body" >
             <h5 class="card-title">{{ message.subject_header }}</h5>
             <h6 class="card-subtitle mb-2 text-muted">From: <a href="/user/profile/{{ message.sender.id }}">{{ message.sender }}</a></h6>
+            <h6 class="card-subtitle mb-2 text-muted">Date sent: {{ message.date_sent }} </h6>
             <p class="card-text">{{ message.message_content }}</p>
             <a href="#" class="card-link">Open</a>
-            <a href="/messages/reply/{{ message.id }} %}" class="card-link">Reply</a>
-            <a href="#" class="card-link">Delete</a>
+            <a href="/messages/reply/{{ message.sender.id }}" class="card-link">Reply</a>
+            <a href="/messages/{{ message.id }}" class="card-link" >Delete</a>
 
         </div>
     </div>

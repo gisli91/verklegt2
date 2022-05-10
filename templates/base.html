@@ -49,6 +49,10 @@
 
             </ul>
 
+                {% if user.is_authenticated %}
+                    <img src="{{ user.profile.profile_image.url }}" class="profile-image"/>
+                {% endif %}
+
         </div>
 </nav>
    {% if messages %}

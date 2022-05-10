@@ -9,9 +9,7 @@
     justify-content: space-evenly;
 }
 
-.spacer{
-    height: 30%;
-}
+
 
 .nav-item-left{
     right: auto;
@@ -31,3 +29,16 @@ a, a:hover, a:visited, a:active {
     margin:1rem;
     align-content: center;
 }
+
+
+.btn-primary {
+    margin-bottom: 50px;
+}
+
+
+#new_msg_btn{
+    background-color: green;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
