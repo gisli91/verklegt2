@@ -9,7 +9,9 @@
 # Environments
 .env
 .venv
-*.py[cod]
+*.pyc
+*.pyo
+*.pyk
 env/
 venv/
 ENV/
