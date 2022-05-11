@@ -6,7 +6,9 @@
             <h6 class="card-subtitle mb-2 text-muted">Date sent: {{ message.date_sent }} </h6>
             <p class="card-text">{{ message.message_content }}</p>
             <a href="#" class="card-link">Open</a>
-            <a href="/messages/reply/{{ message.sender.id }}" class="card-link">Reply</a>
+            {% if message.sender.username != "Notifications" %}
+                <a href="/messages/reply/{{ message.sender.id }}" class="card-link">Reply</a>
+            {% endif %}
             <a href="/messages/{{ message.id }}" class="card-link" >Delete</a>
 
         </div>

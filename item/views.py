@@ -5,15 +5,33 @@ from item.models import Item
 
 
 # Create your views here.
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+
 
 # Create your views here.
 def index(request):
+    if "search_filter" in request.GET:
+        search_filter = request.GET["search_filter"]
+        items = [{
+            "id": x.id,
+            "name": x.name,
+            "seller": x.seller.username,
+            "highest_bid": x.highest_bid,
+            "category": x.category,
+            "image": x.item_image.url
+        } for x in Item.objects.filter(name__icontains=search_filter)]
+        return JsonResponse({"data": items})
+
     context = {"items": Item.objects.all().order_by("name")}
     return render(request, "item/index.html", context)
 
+
+
 def frontpage(request):
-    return render(request, "frontpage.html")
+    newest_items = Item.object.all().order_by("date_posted")
+    return render(request, "frontpage.html",{
+        "newest_items": newest_items
+    })
 
 
 @login_required
@@ -31,8 +49,10 @@ def auction_item(request):
     })
 
 def get_item_by_id(request, id):
+    item = get_object_or_404(Item, pk=id)
     return render(request, "item/item-details.html", {
-        "item": get_object_or_404(Item, pk=id)
+        "item": item,
+        "related_items": Item.objects.filter(category=item.category)
     })
 
 @login_required
