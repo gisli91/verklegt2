@@ -44,9 +44,8 @@ a, a:hover, a:visited, a:active {
 }
 
 .img-container {
-    max-width: 10px;
-    max-height: 10px;
-    background-color: aqua;
+    max-width: 25px;
+    max-height: 25px;
 }
 
 #nav-img {
