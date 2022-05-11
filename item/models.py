@@ -22,6 +22,7 @@ class Item(models.Model):
     date_posted = models.DateTimeField(default=datetime.now(), blank=True)
     item_image = models.ImageField(default="default-item.jpg", upload_to="item_images")
     category = MultiSelectField(choices=CATEGORY_CHOICE, null=True)
+    item_listed = models.BooleanField(default=True)
 
 
 

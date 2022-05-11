@@ -6,17 +6,23 @@ from user.forms.user_forms import UserSignupForm, UserUpdateForm, ProfileUpdateF
 from django.shortcuts import render, redirect, get_object_or_404
 
 from user.forms.profile_form import ProfileForm
-from user.models import Profile
+
 
 
 # Create your views here.
 def register(request):
     if request.method == "POST":
-        form = UserSignupForm(data=request.POST)
+        form = UserSignupForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            profile = ProfileForm().save(commit=False)
+            profile.user = user
+            profile.save()
             messages.success(request, f"Your Profile Has Been Created")
             return redirect("login")
+        else:
+            messages.error(request, "Invalid password input, please check guidelines.")
+
     return render(request, "user/register.html", {
         "form": UserSignupForm()
     })

@@ -39,6 +39,12 @@ def reply(request, id):
     return render(request, "message/send_message.html", context)
 
 
+def get_message_by_id(request, id):
+    return render(request, "message/message_details.html", {
+        "message": get_object_or_404(Message, pk=id)
+    })
+
+
 def delete(request, id):
     message = get_object_or_404(Message, pk=id)
     message.delete()

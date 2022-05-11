@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-mb-6">
+            <h1>Message to you!</h1>
+            <img src="{{ message.sender.profile.profile_img.url }}" class="profile-image"/>
+
+        </div>
+        <div class="col-mb-6">
+
+            <a class="usernames" href="/user/profile/{{ message.sender.id }}">From: {{ message.sender.username }}</a>
+            <p style="font-style: italic">{{ message.date_sent }}</p>
+            <p>{{ message.subject_header }}</p>
+            <p>{{ message.message_content }}</p>
+            {% if message.is_bid %}
+                {% csrf_token %}
+                <a href="/bids/accept/{{ message.bid_id.id }}" class="card-link" >Accept</a>
+                <a href="#" class="card-link" >Decline</a>
+                {% else %}
+                <a href="/messages/reply/{{ message.sender.id }}" class="card-link" >Reply</a>
+            {% endif %}
+            <a href="/del/{{ message.id }}" class="card-link" >Delete</a>
+
+        </div>
+    </div>
+{% endblock %}

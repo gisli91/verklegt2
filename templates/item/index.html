@@ -10,13 +10,17 @@
     <div class="btn-group">
 
     </div>
-
-
     <div class="items">
         <div class="row">
             {% for item in items %}
                 {% include "item/single_item.html" with item=item %}
             {% endfor %}
         </div>
+    <div class="row">
+        {% for item in items %}
+            {% if item.item_listed %}
+                {% include "item/single_item.html" with item=item %}
+            {% endif %}
+        {% endfor %}
     </div>
 {% endblock %}
