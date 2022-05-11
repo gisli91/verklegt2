@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'message.apps.MessageConfig',
     'bid.apps.BidConfig',
     'multiselectfield',
+    'payment',
 
 
 ]

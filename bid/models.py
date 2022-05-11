@@ -10,3 +10,5 @@ class Bid(models.Model):
     bid_amount = models.FloatField()
     bid_posted = models.DateTimeField(default=datetime.now(), blank=True)
     bid_accepted = models.BooleanField(default=False)
+
+
