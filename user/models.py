@@ -24,3 +24,5 @@ class Profile(models.Model):
             img.thumbnail(output_size)
             img.save(self.profile_image.path)
 
+        image_small = img
+

@@ -5,10 +5,23 @@ from item.models import Item
 
 
 # Create your views here.
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+
 
 # Create your views here.
 def index(request):
+    if "search_filter" in request.GET:
+        search_filter = request.GET["search_filter"]
+        items = [{
+            "id": x.id,
+            "name": x.name,
+            "seller": x.seller.username,
+            "highest_bid": x.highest_bid,
+            "category": x.category,
+            "image": x.item_image.url
+        } for x in Item.objects.filter(name__icontains=search_filter)]
+        return JsonResponse({"data": items})
+
     context = {"items": Item.objects.all().order_by("name")}
     return render(request, "item/index.html", context)
 

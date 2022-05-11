@@ -9,10 +9,11 @@
     </div>
 
 
-
-    <div class="row">
-        {% for item in items %}
-            {% include "item/single_item.html" with item=item %}
-        {% endfor %}
+    <div class="items">
+        <div class="row">
+            {% for item in items %}
+                {% include "item/single_item.html" with item=item %}
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
