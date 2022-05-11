@@ -1,7 +1,5 @@
 Accept/Decline bid  ///??completed_auctions app???
 
-útæra #tags í item creation
-
 Related items í item-details
 
 Condition i item-details
@@ -29,3 +27,5 @@ Profile img í navbar
 average rating í navbar
 skoða mín items
 
+bidder [bids]
+item

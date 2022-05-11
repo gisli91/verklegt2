@@ -16,6 +16,7 @@
 
             {% if item.seller == request.user %}
                 <a href="{% url "delete_item" item.id %}" class="block btn btn-primary">Delete Item</a>
+                <a href="{% url "update_item" item.id %}" class="block btn btn-primary">Update</a>
                 {% else %}
                     {% if user.is_authenticated %}
                         <a href="{% url "make_bid" item.id %}" class="block btn btn-primary">Bid</a>
