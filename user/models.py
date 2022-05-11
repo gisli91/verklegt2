@@ -10,6 +10,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.CharField(max_length=255, blank=True)
     profile_image = models.ImageField(default="default.jpg", upload_to="profile_images")
+    profile_image_small = models.CharField(max_length=255, blank=True)
 
 
     def __str__(self):
@@ -24,5 +25,7 @@ class Profile(models.Model):
             img.thumbnail(output_size)
             img.save(self.profile_image.path)
 
-        image_small = img
+
+
+
 

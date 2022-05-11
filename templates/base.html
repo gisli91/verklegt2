@@ -50,7 +50,9 @@
             </ul>
 
                 {% if user.is_authenticated %}
-                    <img src="{{ request.user.profile.profile_image.url }}" class="profile-image"/>
+                    <div class="img-container">
+                        <img src="{{ request.user.profile.profile_image.url }}" class="rounded-circle account-img" id="nav-img"/>
+                    /div>
                 {% endif %}
 
         </div>

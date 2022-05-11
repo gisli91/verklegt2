@@ -18,11 +18,10 @@ def inbox(request):
 
 def reply(request, id):
     receiver = get_object_or_404(User, pk=id)
-
+    if receiver.username == "Notifications":
+        return redirect("message-inbox")
     if request.method == "POST":
-
         form = ReplyMessageForm(request.POST)
-
         if form.is_valid():
             message = form.save(commit=False)
             message.sender = request.user

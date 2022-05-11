@@ -25,8 +25,13 @@ def index(request):
     context = {"items": Item.objects.all().order_by("name")}
     return render(request, "item/index.html", context)
 
+
+
 def frontpage(request):
-    return render(request, "frontpage.html")
+    newest_items = Item.object.all().order_by("date_posted")
+    return render(request, "frontpage.html",{
+        "newest_items": newest_items
+    })
 
 
 @login_required
@@ -44,8 +49,10 @@ def auction_item(request):
     })
 
 def get_item_by_id(request, id):
+    item = get_object_or_404(Item, pk=id)
     return render(request, "item/item-details.html", {
-        "item": get_object_or_404(Item, pk=id)
+        "item": item,
+        "related_items": Item.objects.filter(category=item.category)
     })
 
 @login_required

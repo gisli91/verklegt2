@@ -23,5 +23,13 @@
                     {% endif %}
             {% endif %}
         </div>
+        <div>
+            <h3 class="text-center">Related Items</h3>
+            <div class="row">
+                {% for item in related_items %}
+                {% include "item/single_item.html" with item=item %}
+            {% endfor %}
+            </div>
+        </div>
     </div>
 {% endblock %}
