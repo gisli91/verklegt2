@@ -26,14 +26,6 @@ def index(request):
     return render(request, "item/index.html", context)
 
 
-
-def frontpage(request):
-    newest_items = Item.object.all().order_by("date_posted")
-    return render(request, "frontpage.html",{
-        "newest_items": newest_items
-    })
-
-
 @login_required
 def auction_item(request):
     if request.method == "POST":
