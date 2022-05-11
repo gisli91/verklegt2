@@ -14,7 +14,7 @@ $(document).ready(function () {
                                          <div class="card-body">
                                             <h5 class="card-title">${ d.name }</h5>
                                             <p class="card-text"><small class="text-muted">${ d.seller }</small></p>
-                                            <p class="card-text"><small class="text-muted">Category: ${ d.category }} </small></p>
+                                            <p class="card-text"><small class="text-muted">Category: ${ d.category } </small></p>
                                          </div>
                                     </div>
                                 </a>
