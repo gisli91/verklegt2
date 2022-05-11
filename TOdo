@@ -1,24 +1,35 @@
-Accept/Decline bid  ///??completed_auctions app???
-
-Condition i item-details
-
-CheckOut
-    Contact information page
-        ●Full name
-        ●Street name
-        ●House number
-        ●City
-        ●Country (displayed as a <select> HTML element)
-        ●Postal code
-    Payment page
-        ●Name of cardholder
-        ●Card number
-        ●Expiration date
-        ●CVC
-    Rate the seller
+laga item cards
+henda items og gera ný
+payment ferli
+laga related items
+laga items á forsíðu
+laga forsíðu?
+condition á items
+filtera eftir verði
+average rating
+delete items when accepted
+senda msg á alla sem bidduðu þegar accepted
 
 
-Raða filterar
-average rating í navbar
-skoða mín items
-
+●Checkout
+○The user with the accepting offer must checkout in order to finalize the sale
+of the item
+○There should be three stages of the checkout phase
+■Contact information
+●Full name
+●Street name
+●House number
+●City
+●Country (displayed as a <select> HTML element)
+●Postal code
+■Payment
+●Name of cardholder
+●Card number
+●Expiration date
+●CVC
+■(Optionally) Rate the seller
+■Review (a read-only site where a user can review what he is buying
+and what information he has already typed in)
+●Confirm
+○Easy navigation between steps -  it should be easy to navigate between the
+steps in the checkout
