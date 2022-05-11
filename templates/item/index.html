@@ -12,7 +12,9 @@
 
     <div class="row">
         {% for item in items %}
-            {% include "item/single_item.html" with item=item %}
+            {% if item.item_listed %}
+                {% include "item/single_item.html" with item=item %}
+            {% endif %}
         {% endfor %}
     </div>
 {% endblock %}

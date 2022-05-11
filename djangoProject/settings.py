@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'message.apps.MessageConfig',
     'bid.apps.BidConfig',
-    'multiselectfield'
+    'multiselectfield',
+
 
 ]
 

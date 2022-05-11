@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from item.models import Item
 from django.contrib.auth.models import User
@@ -6,8 +7,15 @@ from bid.forms.bid_forms import BidForm
 
 
 # Create your views here.
+from bid.models import Bid
 
+@login_required
+def accept_bid(request, id):
+    bid = get_object_or_404(Bid, pk=id)
 
+    return redirect(f"/items/{bid.item.id}")
+
+@login_required
 def make_bid(request, id):
     item = get_object_or_404(Item, pk=id)
     item.highest_bid
