@@ -20,6 +20,7 @@ $(document).ready(function () {
                                 </a>
                             </div>`
                     });
+
                     $(".items").html(newHTML.join(""))
                     $('#search-box').val("")
                 },
