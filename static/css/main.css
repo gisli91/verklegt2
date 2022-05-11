@@ -54,3 +54,6 @@ a, a:hover, a:visited, a:active {
     object-fit: contain;
 }
 
+#front-container {
+    margin-top: 2rem;
+}
