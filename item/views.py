@@ -36,7 +36,6 @@ def index(request):
         return JsonResponse({"data": items})
 
     elif "sort_price_filter" in request.GET:
-        sort_price_filter = request.GET["sort_price_filter"]
         items = [{
             "id": x.id,
             "name": x.name,
