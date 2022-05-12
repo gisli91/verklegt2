@@ -1,14 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-    <h2>Messages</h2>
-    <div class="card-group">
-        <a style="margin-top: 10px" href="{% url 'send_message' %}" class="block btn btn-primary">New message</a>
-        <div class="row">
+    <div class="row">
+        <div class="col">
+           <h3>Messages</h3>
+        </div>
+        <div class="col">
+            <a style="margin-top: 10px" href="{% url 'send_message' %}" class="block btn btn-primary">New message</a>
+        </div>
+    </div>
+    <legend class="border-bottom mb-4">Inbox</legend>
 
+        <div class="row">
             {% for message in messages reversed %}
                 {% include "message/single_message.html" with message=message %}
             {% endfor %}
         </div>
-    </div>
 
 {% endblock %}

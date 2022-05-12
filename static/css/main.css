@@ -57,3 +57,7 @@ a, a:hover, a:visited, a:active {
 #front-container {
     margin-top: 6em;
 }
+
+h {
+    font-family: "Lucida Grande";
+}
