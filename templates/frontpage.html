@@ -29,7 +29,7 @@
     <div class="front-container">
         <h3 class="text-center">Latest Items</h3>
         <div class="row">
-            {% for item in newest_items reversed %}
+            {% for item in newest_items %}
                 {% include "item/single_item.html" with item=item %}
             {% endfor %}
         </div>
