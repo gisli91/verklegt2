@@ -22,7 +22,7 @@ $(document).ready(function () {
                                 </div>`
                     });
 
-                    $(".items").html(newHTML.join(""))
+                    $(".row").html(newHTML.join(""))
                     $('#search-box').val("")
                 },
                 error: function (xhr, status, error) {
@@ -54,7 +54,7 @@ $(document).ready(function () {
                             </div>`
                     });
 
-                    $(".items").html(newHTML.join(""))
+                    $(".row").html(newHTML.join(""))
                 },
                 error: function (xhr, status, error) {
                     console.error(error);
@@ -85,7 +85,7 @@ $(document).ready(function () {
                             </div>`
                     });
 
-                    $(".items").html(newHTML.join(""))
+                    $(".row").html(newHTML.join(""))
                 },
                 error: function (xhr, status, error) {
                     console.error(error);

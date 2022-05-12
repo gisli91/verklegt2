@@ -1,35 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="row">
-        <div class="col-mb-6">
-            <h1>{{ item.name }}</h1>
-            <img src="{{ item.item_image.url }}" class="item-img"/>
+    <div class="text-center">
+        <div class="row">
+            <div class="col-mb-6">
+                <h1>{{ item.name }}</h1>
+                <img src="{{ item.item_image.url }}" class="item-img"/>
+            </div>
+            <div class="col-mb-6">
+                <h4>Seller</h4>
+                <a class="usernames" href="/user/profile/{{ item.seller.id }}">{{ item.seller.username }}</a>
+                <p>{{ item.description }}</p>
+                <p>${{ item.highest_bid }}</p>
+                <p class="card-text"><small class="text-muted">Category: {{ item.category }} </small></p>
 
-
-        </div>
-        <div class="col-mb-6">
-            <h4>Seller</h4>
-            <a class="usernames" href="/user/profile/{{ item.seller.id }}">{{ item.seller.username }}</a>
-            <p>{{ item.description }}</p>
-            <p>${{ item.highest_bid }}</p>
-            <p class="card-text"><small class="text-muted">Category: {{ item.category }} </small></p>
-
-            {% if item.seller == request.user %}
-                <a href="{% url "delete_item" item.id %}" class="block btn btn-primary">Delete Item</a>
-                <a href="{% url "update_item" item.id %}" class="block btn btn-primary">Update</a>
-                {% else %}
-                    {% if user.is_authenticated %}
-                        <a href="{% url "make_bid" item.id %}" class="block btn btn-primary">Bid</a>
-                    {% endif %}
-            {% endif %}
-        </div>
-        <div>
-            <h3 class="text-center">Related Items</h3>
-            <div class="row">
-                {% for item in related_items %}
-                {% include "item/single_item.html" with item=item %}
-            {% endfor %}
+                {% if item.seller == request.user %}
+                    <a href="{% url "delete_item" item.id %}" class="block btn btn-primary">Delete Item</a>
+                    <a href="{% url "update_item" item.id %}" class="block btn btn-primary">Update</a>
+                    {% else %}
+                        {% if user.is_authenticated %}
+                            <a href="{% url "make_bid" item.id %}" class="block btn btn-primary">Bid</a>
+                        {% endif %}
+                {% endif %}
+            </div>
+            <div>
+                <h3 class="text-center">Related Items</h3>
+                <div class="row">
+                    {% for item in related_items %}
+                    {% include "item/single_item.html" with item=item %}
+                {% endfor %}
+                </div>
             </div>
         </div>
-    </div>
+   </div>
 {% endblock %}

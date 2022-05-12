@@ -1,7 +1,11 @@
 <div class="col-sm-4 col-md-6 col-lg-4 d-flex align-items-stretch">
     <a href="/items/{{ item.id }}">
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="{{ item.item_image.url }}">
+            {% if item.item_image_url %}
+                <img class="card-img-top" src="{{ item.item_image_url }}">
+            {% else %}
+                <img class="card-img-top" src="{{ item.item_image.url }}">
+            {% endif %}
             <div class="card-body">
                 <h5 class="card-title">{{ item.name }}</h5>
                 <p class="card-text">{{ item.highest_bid }}$</p>

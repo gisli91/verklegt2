@@ -3,6 +3,7 @@ from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from item.forms.item_form import ItemCreateForm, ItemUpdateForm
 from item.models import Item
+from operator import itemgetter
 
 
 # Create your views here.
@@ -66,9 +67,10 @@ def auction_item(request):
 
 def get_item_by_id(request, id):
     item = get_object_or_404(Item, pk=id)
+    related_items = get_related_items(item)
     return render(request, "item/item-details.html", {
         "item": item,
-        "related_items": Item.objects.filter(Q(category=item.category) | Q(seller=item.seller)).exclude(id=item.id)
+        "related_items": related_items
     })
 
 @login_required
@@ -93,6 +95,41 @@ def update_item(request, id):
         "form": form,
         "id": id
     })
+
+def get_all_items_as_list():
+    items = [{
+        "id": x.id,
+        "name": x.name,
+        "seller": x.seller.username,
+        "description": x.description,
+        "highest_bid": x.highest_bid,
+        "category": x.category,
+        "item_image_url": x.item_image.url
+    } for x in Item.objects.all()]
+    return items
+
+def get_related_items(item):
+    all_items = get_all_items_as_list()
+    a_lis = []
+    for x in all_items:
+        for category in x["category"]:
+            if category in item.category:
+                if "score" in x:
+                    x["score"] += 1
+                else:
+                    x["score"] = 1
+        if item.seller.username == x["seller"]:
+            if "score" in x:
+                x["score"] += 0.5
+            else:
+                x["score"] = 0.5
+        if "score" in x and x["id"] != item.id:
+            a_lis.append(x)
+    related_items = sorted(a_lis, key=itemgetter("score"), reverse=True)
+    print(related_items[:3])
+    return related_items[:3]
+
+
 
 
 
