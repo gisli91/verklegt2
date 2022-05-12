@@ -1,6 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+
+from item.models import Item
 from user.forms.user_forms import UserSignupForm, UserUpdateForm, ProfileUpdateForm
 from django.shortcuts import render, redirect, get_object_or_404
 from user.forms.profile_form import ProfileForm
@@ -41,7 +43,8 @@ def profile(request):
 
     context = {
         "u_form": user_update_from,
-        "p_form": profile_update_form
+        "p_form": profile_update_form,
+        "user_items": Item.objects.filter(seller=request.user)
     }
 
     return render(request, "user/profile.html", context)
