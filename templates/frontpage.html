@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+    <h1 class="text-center" style="margin: 1em;">Fire Sale</h1>
     <div class="front-container">
         <div class="front-page-container">
             <div class="frontpage-cards">
@@ -26,7 +27,7 @@
             </div>
         </div>
     </div>
-    <div class="front-container">
+    <div class="front-container" style="margin-top:4em;">
         <h3 class="text-center">Latest Items</h3>
         <div class="row">
             {% for item in newest_items %}
