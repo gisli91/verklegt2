@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from item.forms.item_form import ItemCreateForm, ItemUpdateForm
 from item.models import Item
@@ -42,9 +43,13 @@ def auction_item(request):
 
 def get_item_by_id(request, id):
     item = get_object_or_404(Item, pk=id)
+    categories = []
+    for category in item.category:
+        categories.append(category)
+    print(categories)
     return render(request, "item/item-details.html", {
         "item": item,
-        "related_items": Item.objects.filter(category=item.category)
+        "related_items": Item.objects.filter( Q(category=item.category) | Q(seller=item.seller))
     })
 
 @login_required

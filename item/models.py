@@ -13,7 +13,18 @@ class Item(models.Model):
     CATEGORY_CHOICE = (
         ("Furniture", "Furniture"),
         ("Appliances", "Appliances"),
-        ("Electronics", "Electronics")
+        ("Electronics", "Electronics"),
+        ("Pets", "Pets"),
+        ("Men's Clothing", "Mens Clothing"),
+        ("Women's Clothing", "Womens Clothing"),
+        ("Cars", "Cars"),
+        ("Bikes", "Bikes"),
+        ("Instruments", "Instruments"),
+        ("Books", "Books"),
+        ("Tools", "Tools"),
+        ("Other", "Other")
+
+
     )
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255, blank=True)
