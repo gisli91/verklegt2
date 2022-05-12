@@ -43,13 +43,9 @@ def auction_item(request):
 
 def get_item_by_id(request, id):
     item = get_object_or_404(Item, pk=id)
-    categories = []
-    for category in item.category:
-        categories.append(category)
-    print(categories)
     return render(request, "item/item-details.html", {
         "item": item,
-        "related_items": Item.objects.filter( Q(category=item.category) | Q(seller=item.seller))
+        "related_items": Item.objects.filter(Q(category=item.category) | Q(seller=item.seller)).exclude(id=item.id)
     })
 
 @login_required
