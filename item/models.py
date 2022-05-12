@@ -35,6 +35,9 @@ class Item(models.Model):
     category = MultiSelectField(choices=CATEGORY_CHOICE, null=True)
     item_listed = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.name
+
 
 
 

@@ -24,7 +24,7 @@ def receive_bid(sender, instance, created, *args, **kwargs):
 @receiver(pre_save, sender=Payment)
 def bid_accepted(sender, instance, *args, **kwargs):
     content = f"Your bid for ${instance.bid.bid_amount} for item {instance.bid.item} from user {instance.bid.bidder}" \
-              f" Please provide your payment information"
+
     header = f"Your bid for  {instance.bid.item.name} has been accepted!"
     sender = User.objects.filter(username="Notifications").first()
 
