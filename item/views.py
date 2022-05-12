@@ -23,6 +23,30 @@ def index(request):
         } for x in Item.objects.filter(name__icontains=search_filter)]
         return JsonResponse({"data": items})
 
+    elif "sort_name_filter" in request.GET:
+        sort_name_filter = request.GET["sort_name_filter"]
+        items = [{
+            "id": x.id,
+            "name": x.name,
+            "seller": x.seller.username,
+            "highest_bid": x.highest_bid,
+            "category": x.category,
+            "image": x.item_image.url
+        } for x in Item.objects.all().order_by("name")]
+        return JsonResponse({"data": items})
+
+    elif "sort_price_filter" in request.GET:
+        sort_price_filter = request.GET["sort_price_filter"]
+        items = [{
+            "id": x.id,
+            "name": x.name,
+            "seller": x.seller.username,
+            "highest_bid": x.highest_bid,
+            "category": x.category,
+            "image": x.item_image.url
+        } for x in Item.objects.all().order_by("highest_bid")]
+        return JsonResponse({"data": items})
+
     context = {"items": Item.objects.all().order_by("name")}
     return render(request, "item/index.html", context)
 
