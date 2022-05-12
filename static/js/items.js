@@ -7,8 +7,8 @@ $(document).ready(function () {
             type: "GET",
             success: function(resp) {
                 let newHTML = resp.data.map(d => {
-                    return `<div class="col-sm-4">
-                                <a href="/items/${ d.id }">
+                    return `<div class="col-sm-4 col-md-6 col-lg-4 d-flex align-items-stretch">
+                            <a href="/items/${ d.id }">
                                     <div class="card" style="width: 18rem;">
                                          <img class="card-img-top" src="${ d.image }">
                                          <div class="card-body">
@@ -19,7 +19,7 @@ $(document).ready(function () {
                                          </div>
                                     </div>
                                 </a>
-                            </div>`
+                                </div>`
                     });
 
                     $(".items").html(newHTML.join(""))
@@ -39,7 +39,7 @@ $(document).ready(function () {
             type: "GET",
             success: function(resp) {
                 let newHTML = resp.data.map(d => {
-                    return `<div class="col-sm-4">
+                    return `<div class="col-sm-4 col-md-6 col-lg-4 d-flex align-items-stretch">
                                 <a href="/items/${ d.id }">
                                     <div class="card" style="width: 18rem;">
                                          <img class="card-img-top" src="${ d.image }">
