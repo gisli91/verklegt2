@@ -14,7 +14,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 def inbox(request):
-    context = {"messages": Message.objects.filter(receiver=request.user)}
+    context = {"messages": Message.objects.filter(receiver=request.user).exclude(sender=request.user)}
     return render(request, "message/index.html", context)
 
 
