@@ -8,10 +8,14 @@
             </div>
             <div class="col-mb-6">
                 <h4>Seller</h4>
-                <a class="usernames" href="/user/profile/{{ item.seller.id }}">{{ item.seller.username }}</a>
+                <a class="usernames" href="/user/profile/{{ item.seller.id }}"><span class="badge bg-success">{{ item.seller.username }}</span></a>
                 <p>{{ item.description }}</p>
                 <p>${{ item.highest_bid }}</p>
-                <p class="card-text"><small class="text-muted">Category: {{ item.category }} </small></p>
+                <p class="card-text">
+                    <small class="text-muted">
+                        Category: <span class="badge bg-primary text-light">{{ item.category }}</span>
+                    </small>
+                </p>
 
                 {% if item.seller == request.user %}
                     <a href="{% url "delete_item" item.id %}" class="block btn btn-primary">Delete Item</a>

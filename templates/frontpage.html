@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
+    <h1 style="margin-bottom: 1em;"class="text-center">Fire Sale</h1>
     <div class="front-container">
         <div class="front-page-container">
             <div class="frontpage-cards">
                 <div class="row">
                   <div class="col-sm-6 d-flex align-items-stretch">
-                    <div class="card">
+                    <div class="card" style="background-color: aliceblue;">
                       <div class="card-body">
                         <h5 class="card-title">Browse Item Auctions</h5>
                         <p class="card-text">Find a bargain today, browse millions of items.</p>
@@ -14,7 +15,7 @@
                     </div>
                   </div>
                   <div class="col-sm-6 d-flex align-items-stretch">
-                    <div class="card">
+                    <div class="card" style="background-color: aliceblue;">
                       <div class="card-body">
                         <h5 class="card-title">Create a New Auction!</h5>
                         <p class="card-text">Create a new auction in a matter of minutes.</p>
@@ -26,7 +27,7 @@
             </div>
         </div>
     </div>
-    <div class="front-container">
+    <div class="front-container" style="margin-top:3em;">
         <h3 class="text-center">Latest Items</h3>
         <div class="row">
             {% for item in newest_items %}
