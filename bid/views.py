@@ -8,12 +8,19 @@ from bid.forms.bid_forms import BidForm
 
 # Create your views here.
 from bid.models import Bid
+from payment.forms.payment_form import PaymentForm
+
 
 @login_required
 def accept_bid(request, id):
     bid = get_object_or_404(Bid, pk=id)
+    payment_form = PaymentForm()
+    payment = payment_form.save(commit=False)
+    payment.bid = bid
+    payment.user = bid.bidder
 
-    return redirect(f"/items/{bid.item.id}")
+    payment.save()
+    return redirect(f"/messages/")
 
 @login_required
 def make_bid(request, id):

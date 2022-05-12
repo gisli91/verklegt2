@@ -9,8 +9,8 @@ from bid.models import Bid
 class Payment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     bid = models.ForeignKey(Bid, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)
-    card_nr = models.IntegerField(max_length=50)
-    cvc_nr = models.IntegerField(max_length=3)
-    exp_date = models.IntegerField(max_length=4)
+    name = models.CharField(max_length=50, blank=True)
+    card_nr = models.IntegerField(blank=True, null=True)
+    cvc_nr = models.IntegerField(blank=True, null=True)
+    exp_date = models.IntegerField(blank=True, null=True)
 

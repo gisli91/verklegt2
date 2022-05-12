@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
 
     <div class="row">
@@ -13,14 +14,30 @@
             <p style="font-style: italic">{{ message.date_sent }}</p>
             <p>{{ message.subject_header }}</p>
             <p>{{ message.message_content }}</p>
-            {% if message.is_bid %}
+            {% if message.is_bid and not message.is_bid_accepted %}
                 {% csrf_token %}
                 <a href="/bids/accept/{{ message.bid_id.id }}" class="card-link" >Accept</a>
                 <a href="#" class="card-link" >Decline</a>
-                {% else %}
+              {% endif %}
+            {% if message.sender == "Notifications" %}
+                {% csrf_token %}
                 <a href="/messages/reply/{{ message.sender.id }}" class="card-link" >Reply</a>
             {% endif %}
             <a href="/del/{{ message.id }}" class="card-link" >Delete</a>
+
+            {% if message.is_bid_accepted %}
+                <form class="content-section "method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="from-group">
+                    <legend style="margin-top: 20px" class="border-bottom mb-4">Please enter your payment information</legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                   <button style="margin-top: 50px" class="btn btn-primary" type="submit">Send message</button>
+                </div>
+        </form>
+
+            {% endif %}
 
         </div>
     </div>

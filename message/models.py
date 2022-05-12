@@ -14,6 +14,7 @@ class Message(models.Model):
     date_sent = models.DateTimeField(default=datetime.now(), blank=True)
     subject_header = models.CharField(max_length=255)
     is_bid = models.BooleanField(default=False)
+    is_bid_accepted = models.BooleanField(default=False)
     bid_id = models.ForeignKey(Bid, related_name="bid_id", blank=True, null=True, on_delete=models.CASCADE)
 
     def __str__(self):

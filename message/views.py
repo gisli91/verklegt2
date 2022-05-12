@@ -1,6 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
+
+from payment.forms.payment_form import PaymentForm
 from user.models import User
 from .forms.message_form import MessageForm
 from .forms.reply_message_form import ReplyMessageForm
@@ -40,6 +42,14 @@ def reply(request, id):
 
 
 def get_message_by_id(request, id):
+    message = get_object_or_404(Message, pk=id)
+    if message.is_bid_accepted:
+        form = PaymentForm()
+        return render(request, "message/message_details.html", {
+            "message": get_object_or_404(Message, pk=id),
+            "form": form
+        })
+
     return render(request, "message/message_details.html", {
         "message": get_object_or_404(Message, pk=id)
     })
