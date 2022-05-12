@@ -1,6 +1,6 @@
 <div class="col-sm-4 col-md-6 col-lg-4 d-flex align-items-stretch">
     <a href="/items/{{ item.id }}">
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 18rem; background-color: aliceblue; margin-bottom: 1em;">
             {% if item.item_image_url %}
                 <img class="card-img-top" src="{{ item.item_image_url }}">
             {% else %}
@@ -11,7 +11,11 @@
                 <p class="card-text">{{ item.highest_bid }}$</p>
                 <p class="card-text"><small class="text-muted">{{ item.seller }}</small></p>
 
-                <p class="card-text"><small class="text-muted">Category: {{ item.category }} </small></p>
+                <p class="card-text">
+                    <small class="text-muted">
+                        Category: <span class="badge bg-primary text-light">{{ item.category }}</span>
+                    </small>
+                </p>
             </div>
         </div>
     </a>
