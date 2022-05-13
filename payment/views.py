@@ -34,7 +34,7 @@ def review_and_process_payment(request, id):
         payment.save()
         payment.bid.item.item_listed = False
         payment.bid.item.save()
-        messages.success(request, f"Your, payment was successful!")
+        messages.success(request, "Your payment was successful!")
         return redirect("frontpage")
     context = {
         "payment": payment
