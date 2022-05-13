@@ -41,13 +41,17 @@ $(document).ready(function () {
                 let newHTML = resp.data.map(d => {
                     return `<div class="col-sm-4 col-md-6 col-lg-4 d-flex align-items-stretch">
                                 <a href="/items/${ d.id }">
-                                    <div class="card" style="width: 18rem;">
+                                    <div class="card" style="width: 20rem; background-color: aliceblue; margin-bottom: 1em;">
                                          <img class="card-img-top" src="${ d.image }">
                                          <div class="card-body">
                                             <h5 class="card-title">${ d.name }</h5>
                                             <p class="card-text">${ d.highest_bid }$</p>
                                             <p class="card-text"><small class="text-muted">${ d.seller }</small></p>
-                                            <p class="card-text"><small class="text-muted">Category: ${ d.category } </small></p>
+                                            <p class="card-text">
+                                                <small class="text-muted">
+                                                    Category: <span class="badge bg-primary text-light">${ d.category } </span> 
+                                                </small>
+                                            </p>
                                          </div>
                                     </div>
                                 </a>

@@ -19,4 +19,3 @@ class PaymentForm(forms.ModelForm):
 
 
 
-

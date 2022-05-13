@@ -13,4 +13,5 @@ class Payment(models.Model):
     card_nr = models.IntegerField(blank=True, null=True)
     cvc_nr = models.IntegerField(blank=True, null=True)
     exp_date = models.IntegerField(blank=True, null=True)
+    is_processed = models.BooleanField(default=False)
 
