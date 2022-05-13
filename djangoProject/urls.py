@@ -27,7 +27,7 @@ urlpatterns = [
     path("messages/", include("message.urls")),
     path("", views.frontpage, name="frontpage"),
     path("bids/", include("bid.urls")),
-    path("payment/", include("payment.urls"))
+    path("payments/", include("payment.urls"))
 
 ]
 

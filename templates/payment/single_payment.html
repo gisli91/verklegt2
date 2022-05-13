@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<form class="content-section "method="post" action="{% url "make_payment" %}" enctype="multipart/form-data">
+<form class="content-section "method="post" action="{% url "make_payment" id %}" enctype="multipart/form-data">
             {% csrf_token %}
             <fieldset class="from-group">
                 <legend class="border-bottom mb-4">Please enter payment information</legend>
-                {{ form }}
+                {{ form|crispy }}
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-primary" type="submit">Auction Item</button>
+                <button class="btn btn-primary" type="submit">Pay</button>
             </div>
         </form>
 {% endblock %}

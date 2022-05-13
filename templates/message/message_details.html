@@ -26,16 +26,7 @@
             <a href="/del/{{ message.id }}" class="card-link" >Delete</a>
 
             {% if message.is_bid_accepted %}
-                <form class="content-section "method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <fieldset class="from-group">
-                    <legend style="margin-top: 20px" class="border-bottom mb-4">Please enter your payment information</legend>
-                    {{ form|crispy }}
-                </fieldset>
-                <div class="form-group">
-                   <button style="margin-top: 50px" class="btn btn-primary" type="submit">Send message</button>
-                </div>
-        </form>
+               <a href="/payments/{{ message.bid_id.id }}" class="card-link" >Proceed to checkout</a>
 
             {% endif %}
 

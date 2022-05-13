@@ -5,6 +5,7 @@ from django.db import models
 
 # Create your models here.
 from bid.models import Bid
+from payment.models import Payment
 
 
 class Message(models.Model):
@@ -16,6 +17,7 @@ class Message(models.Model):
     is_bid = models.BooleanField(default=False)
     is_bid_accepted = models.BooleanField(default=False)
     bid_id = models.ForeignKey(Bid, related_name="bid_id", blank=True, null=True, on_delete=models.CASCADE)
+    payment = models.ForeignKey(Payment, blank=True, null=True, on_delete=models.CASCADE )
 
     def __str__(self):
         return f"{self.sender}"

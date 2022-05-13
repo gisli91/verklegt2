@@ -4,23 +4,30 @@ from django.shortcuts import render, redirect, get_object_or_404
 from item.models import Item
 from django.contrib.auth.models import User
 from bid.forms.bid_forms import BidForm
-
+from message.models import Message
 
 # Create your views here.
 from bid.models import Bid
 from payment.forms.payment_form import PaymentForm
+from payment.models import Payment
 
 
 @login_required
 def accept_bid(request, id):
     bid = get_object_or_404(Bid, pk=id)
-    payment_form = PaymentForm()
-    payment = payment_form.save(commit=False)
-    payment.bid = bid
-    payment.user = bid.bidder
+    content = f"Your bid for ${bid.bid_amount} for item {bid.item} from user {bid.bidder}"
+    header = f"Your bid for  {bid.item.name} has been accepted!"
+    sender = User.objects.filter(username="Notifications").first()
+    Message.objects.create(message_content=content,
+                           subject_header=header,
+                           sender=sender,
+                           receiver=bid.bidder,
+                           is_bid=True,
+                           bid_id=bid,
+                           is_bid_accepted=True)
 
-    payment.save()
     return redirect(f"/messages/")
+
 
 @login_required
 def make_bid(request, id):
@@ -43,7 +50,6 @@ def make_bid(request, id):
                 messages.error(request, f"Minimum bid amount is {item.highest_bid * 1.05}")
                 return redirect("make_bid", id=id)
 
-
     bid = BidForm()
 
     context = {
@@ -51,4 +57,3 @@ def make_bid(request, id):
         "item": item,
     }
     return render(request, "bid/make_bid.html", context)
-

@@ -3,6 +3,6 @@ from . import views
 
 
 urlpatterns = [
-    path('<int:id>/', views.make_payment, name="make_payment"),
+    path('<int:id>/', views.payment_screen, name="make_payment"),
 
 ]
