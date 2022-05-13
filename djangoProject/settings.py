@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'bid.apps.BidConfig',
     'multiselectfield',
     'payment',
+    'django_countries'
 
 
 ]
