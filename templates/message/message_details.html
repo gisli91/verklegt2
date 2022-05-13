@@ -23,7 +23,7 @@
                 {% csrf_token %}
                 <a href="/messages/reply/{{ message.sender.id }}" class="card-link" >Reply</a>
             {% endif %}
-            <a href="/del/{{ message.id }}" class="card-link" >Delete</a>
+            <a href="/messages/del/{{ message.id }}" class="card-link" >Delete</a>
 
             {% if message.is_bid_accepted %}
                <a href="/payments/{{ message.bid_id.id }}" class="card-link" >Proceed to checkout</a>
