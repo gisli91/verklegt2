@@ -14,12 +14,15 @@ class Item(models.Model):
         ("Furniture", "Furniture"),
         ("Appliances", "Appliances"),
         ("Electronics", "Electronics"),
+        ("Computers", "Computers"),
         ("Pets", "Pets"),
         ("Men's Clothing", "Mens Clothing"),
         ("Women's Clothing", "Womens Clothing"),
+        ("Vehicles", "Vehicles"),
         ("Cars", "Cars"),
         ("Bikes", "Bikes"),
         ("Instruments", "Instruments"),
+        ("Toys", "Toys"),
         ("Books", "Books"),
         ("Tools", "Tools"),
         ("Other", "Other")
@@ -48,7 +51,6 @@ class Item(models.Model):
         super().save()
 
         img = Image.open(self.item_image.path)
-        if img.height > 400 or img.width > 400:
-            output_size = (400, 400)
-            img.thumbnail(output_size)
-            img.save(self.item_image.path)
+        output_size = (400, 400)
+        img.thumbnail(output_size)
+        img.save(self.item_image.path)

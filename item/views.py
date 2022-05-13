@@ -67,7 +67,7 @@ def auction_item(request):
 
 def get_item_by_id(request, id):
     item = get_object_or_404(Item, pk=id)
-    related_items = get_related_items(item)
+    related_items = get_related_items(item, request)
     return render(request, "item/item-details.html", {
         "item": item,
         "related_items": related_items
@@ -108,7 +108,7 @@ def get_all_items_as_list():
     } for x in Item.objects.all()]
     return items
 
-def get_related_items(item):
+def get_related_items(item, request):
     all_items = get_all_items_as_list()
     a_lis = []
     for x in all_items:
@@ -118,7 +118,7 @@ def get_related_items(item):
                     x["score"] += 1
                 else:
                     x["score"] = 1
-        if item.seller.username == x["seller"]:
+        if item.seller.username == x["seller"] and request.user != item.seller:
             if "score" in x:
                 x["score"] += 0.5
             else:
