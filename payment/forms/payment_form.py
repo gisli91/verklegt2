@@ -14,7 +14,7 @@ class PaymentForm(forms.ModelForm):
             "country": _("Country"),
             "card_nr": _("Card number"),
             "cvc_nr": _("Cvc number"),
-            "exp_date": _("Expiration date")
+            "exp_date": _("Expiration date (MMYY)")
         }
 
 
